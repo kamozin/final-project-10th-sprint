@@ -21,7 +21,7 @@ echo '#!/bin/bash' > dir2/hello.sh
 echo 'echo "$1, привет!"' >> dir2/hello.sh
 
 # устанавливаем для task/dir2/hello.sh права rwxrw-r--
-chmod 766 dir2/hello.sh
+chmod 764 dir2/hello.sh
 
 # сохраняем список файлов task/dir2 в task/dir2/list.txt
 ls dir2 > dir2/list.txt
@@ -43,15 +43,18 @@ NAME="Всем студентам"
 # вывод скрипта должен дописаться в файл task/dir1/summary.txt
 ./dir2/hello.sh "$NAME" >> dir1/summary.txt
 
+# переменная для имени файла
+OUTPUT_FILE="Практическое задание"
+
 # перемещаем с переименованием task/dir1/summary.txt в task/Практическое задание
-mv dir1/summary.txt "Практическое задание"
+mv dir1/summary.txt "$OUTPUT_FILE"
 
 # выводим на консоль содержимое файла task/Практическое задание
-cat "Практическое задание"
+cat "$OUTPUT_FILE"
 
 # ищем в файле "Практическое задание" строки, которые содержат слово "dir"
 # и затем отсортировываем их
-grep "dir" "Практическое задание" | sort
+grep "dir" "$OUTPUT_FILE" | sort
 
 # меняем текущую директорию на родительскую для task
 cd ..
